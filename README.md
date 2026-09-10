@@ -2,7 +2,7 @@
 
 Site institucional em português brasileiro, com composição editorial ampliada, seis divisões em ondas de um único ciclo, navegação por âncoras, conteúdo renderizado no servidor e contato pelo WhatsApp. Prévia local em **http://localhost:3010/**.
 
-A atualização de 10/09/2026 incorpora o portfólio fornecido: seis fotos reais em três comparativos de antes/depois, serviços complementares e dois responsáveis técnicos. Fontes e decisões estão em `docs/CONFERENCIA_PORTFOLIO.md`.
+A atualização de 10/09/2026 incorpora o portfólio fornecido: seis fotos em três comparativos de antes/depois, nove fotos na galeria “A Alfa em campo”, serviços complementares e dois responsáveis técnicos. Fontes e decisões estão em `docs/CONFERENCIA_PORTFOLIO.md` e `docs/GALERIA_SERVICOS.md`.
 
 ## Executar
 
@@ -39,6 +39,9 @@ npm start
 | `app/page.tsx`                 | Estrutura semântica da página institucional                                               |
 | `app/portfolio-content.ts`     | Fotografias, legendas e descrições dos serviços realizados                                |
 | `app/ui/portfolio.tsx`         | Galeria de antes/depois com links para ampliar as fotos                                  |
+| `app/ui/work-gallery.tsx`      | Galeria responsiva dos serviços, com links para os JPEGs originais                        |
+| `app/work-photos.ts`           | Correspondência entre as nove fotos fornecidas, versões WebP e legendas                  |
+| `app/work-gallery.css`         | Galeria em três, duas ou uma coluna, preservando a proporção das fotografias              |
 | `public/images/portfolio/`     | Seis fotos extraídas do PDF, otimizadas em WebP                                           |
 | `app/globals.css`              | Paleta provisória, fontes, grid, composição, responsividade e estados de interação        |
 | `app/editorial.css`            | Composição ampliada, proporções, ondas e adaptação dos novos blocos                       |

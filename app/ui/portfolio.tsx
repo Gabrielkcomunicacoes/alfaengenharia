@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- Fotografias locais otimizadas, com dimensões explícitas e acesso ao arquivo original. */
 import { portfolio } from "../portfolio-content";
+import { workPhotos } from "../work-photos";
+import { WorkGallery } from "./work-gallery";
 
 export function Portfolio() {
   return (
@@ -16,8 +18,9 @@ export function Portfolio() {
         <div>
           <h2 id="portfolio-title">O trabalho aparece nos detalhes.</h2>
           <p className="section-intro">
-            Uma seleção de serviços executados pela Alfa. Veja o antes e o
-            depois de intervenções em fachadas e estruturas de circulação.
+            Uma seleção de serviços executados pela Alfa. Veja comparativos
+            de antes e depois e registros de instalações, manutenção mecânica
+            e trabalhos em fachadas.
           </p>
         </div>
       </div>
@@ -74,6 +77,7 @@ export function Portfolio() {
           </article>
         ))}
       </div>
+      <WorkGallery photos={workPhotos} />
       <div className="portfolio-bottom" data-reveal>
         <p>Fotos do portfólio da Alfa Engenharia. Selecione uma foto para ampliar.</p>
         <a className="text-link" href="#contato">
