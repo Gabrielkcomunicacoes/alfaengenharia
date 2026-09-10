@@ -29,3 +29,9 @@ Após o relato de uma foto quebrada, as versões WebP e o JPEG de `img-sete.jpg`
 A galeria agora tenta o JPEG original uma vez quando uma imagem otimizada falha, removendo `srcset` e `sizes` antes da troca. O tratamento também cobre falhas ocorridas antes da hidratação e não interfere nas fotos que ainda aguardam carregamento adiado. O listener é removido na desmontagem.
 
 `tests/gallery-image-check.mjs` verificou as nove fotos e a ausência de rolagem horizontal em 1440 e 390 px. O bloqueio de downloads WebP no navegador confirmou a recuperação por JPEG; o bloqueio simultâneo do JPEG confirmou que não há repetição infinita. A captura do cenário recuperado foi inspecionada. Build e lint passaram. Os relatórios e a captura ficam em `artifacts/gallery-image-check.json` e `artifacts/gallery-image-recovered.png`.
+
+## JPEG direto para a foto relatada
+
+Após novo relato da mesma imagem quebrada, a foto de soldagem em componentes passou a usar `/images/img-sete.jpg` diretamente no HTML servido, sem `srcset` ou `sizes`. Assim, seu carregamento não depende das versões WebP nem do tratamento de erro em JavaScript. O arquivo original e a proporção da fotografia foram preservados.
+
+O teste verificou o JPEG direto no HTML e no navegador em 1440 e 390 px, inclusive bloqueando as versões WebP dessa foto. As nove imagens carregaram sem rolagem horizontal; a captura `artifacts/gallery-image-direct-jpeg.png` foi inspecionada. Os cenários de recuperação e de ausência de repetição infinita continuam cobertos usando a foto `img-dois.jpg`.

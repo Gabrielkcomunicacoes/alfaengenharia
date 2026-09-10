@@ -90,7 +90,12 @@ export const workPhotos: readonly WorkPhoto[] = records.map(
   ({ original, ...photo }) => ({
     ...photo,
     originalSrc: `/images/${original}.jpg`,
-    src: `/images/portfolio/servicos/${photo.id}.webp`,
-    srcSet: `/images/portfolio/servicos/${photo.id}-640.webp 640w, /images/portfolio/servicos/${photo.id}.webp ${photo.width}w`,
+    // Esta foto usa o JPEG diretamente, inclusive antes da hidratação e sem JS.
+    src: photo.id === "soldagem-componentes"
+      ? `/images/${original}.jpg`
+      : `/images/portfolio/servicos/${photo.id}.webp`,
+    srcSet: photo.id === "soldagem-componentes"
+      ? undefined
+      : `/images/portfolio/servicos/${photo.id}-640.webp 640w, /images/portfolio/servicos/${photo.id}.webp ${photo.width}w`,
   }),
 );

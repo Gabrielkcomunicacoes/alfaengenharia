@@ -41,7 +41,9 @@ export function WorkGallery({ photos }: { photos: readonly WorkPhoto[] }) {
                 data-original-src={photo.originalSrc}
                 src={photo.src}
                 srcSet={photo.srcSet}
-                sizes="(max-width: 599px) 92vw, (max-width: 899px) 44vw, (max-width: 1400px) 29vw, 411px"
+                sizes={photo.srcSet
+                  ? "(max-width: 599px) 92vw, (max-width: 899px) 44vw, (max-width: 1400px) 29vw, 411px"
+                  : undefined}
                 alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
