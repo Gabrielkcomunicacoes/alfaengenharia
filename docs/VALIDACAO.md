@@ -77,3 +77,8 @@ As seis curvas têm uma crista e um vale por transição e mantêm a amplitude n
 As logos recebidas em JPEG foram inspecionadas e processadas localmente para remover apenas o fundo claro. As versões finais em PNG preservam o desenho e as cores fornecidas. O cabeçalho e o rodapé usam a versão horizontal; a imagem principal e o favicon usam o símbolo. A versão vertical permanece organizada nos arquivos de marca, mas foi retirada da interface conforme solicitado. O rodapé foi revisado em 1440 e 390 px: fundo branco confirmado, logo carregada em sua dimensão natural, ausência do bloco vertical e nenhuma rolagem horizontal. A arte social foi refeita com a logo oficial sobre uma composição própria e inspecionada em 1200 × 630 px.
 
 O relatório `artifacts/brand-report.json` registra as larguras 360, 390, 768 e 1440 px. Em todas elas, os quatro arquivos de marca carregaram com dimensões intrínsecas iguais às declaradas e não causaram rolagem horizontal. Não houve erro no console. Capturas: `artifacts/brand-final-*.png`. A auditoria axe do roteiro funcional permaneceu com zero violações.
+# Atualização de portfólio - 10/09/2026
+
+`npm run build` e `npm run lint` concluídos com sucesso. O build atual Next.js inclui verificação TypeScript e pré-renderiza a rota `/`. Seis fotografias foram inspecionadas e associadas às páginas de origem. A galeria adiciona aproximadamente 236 KiB de imagens com carregamento adiado. Não houve alteração de dependências nem de integrações.
+
+A conferência documental está em `CONFERENCIA_PORTFOLIO.md`. A sessão não disponibilizou navegador integrado, portanto os testes visuais e interativos abaixo são históricos e não constituem validação da nova galeria ou do novo menu.

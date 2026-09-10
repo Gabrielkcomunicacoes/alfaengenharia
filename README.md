@@ -2,6 +2,8 @@
 
 Site institucional em português brasileiro, com composição editorial ampliada, seis divisões em ondas de um único ciclo, navegação por âncoras, conteúdo renderizado no servidor e contato pelo WhatsApp. Prévia local em **http://localhost:3010/**.
 
+A atualização de 10/09/2026 incorpora o portfólio fornecido: seis fotos reais em três comparativos de antes/depois, serviços complementares e dois responsáveis técnicos. Fontes e decisões estão em `docs/CONFERENCIA_PORTFOLIO.md`.
+
 ## Executar
 
 Requer Node.js 22.13 ou superior e npm. Desenvolvido e verificado neste ambiente com Node.js 24.
@@ -21,12 +23,12 @@ npm run lint
 npm run build
 ```
 
-O build gera a distribuição em `dist/`, compatível com a estrutura Sites/Vinext e Cloudflare Workers. Nenhuma publicação é feita por esses comandos.
+O build atual usa Next.js e gera a distribuição em `.next/`. Nenhuma publicação é feita por esses comandos. A configuração alternativa Sites/Vinext continua preservada, mas não é usada pelo script `build` atual.
 
 Para servir a distribuição compilada apenas na máquina local:
 
 ```powershell
-npx wrangler dev --config dist/server/wrangler.json --local --port 3002 --ip 127.0.0.1 --persist-to .wrangler/production-check
+npm start
 ```
 
 ## Organização
@@ -35,6 +37,9 @@ npx wrangler dev --config dist/server/wrangler.json --local --port 3002 --ip 127
 | ------------------------------ | ----------------------------------------------------------------------------------------- |
 | `app/site-content.ts`          | Dados da Alfa, contatos, conteúdo, serviços, mensagens e configuração de mídia autorizada |
 | `app/page.tsx`                 | Estrutura semântica da página institucional                                               |
+| `app/portfolio-content.ts`     | Fotografias, legendas e descrições dos serviços realizados                                |
+| `app/ui/portfolio.tsx`         | Galeria de antes/depois com links para ampliar as fotos                                  |
+| `public/images/portfolio/`     | Seis fotos extraídas do PDF, otimizadas em WebP                                           |
 | `app/globals.css`              | Paleta provisória, fontes, grid, composição, responsividade e estados de interação        |
 | `app/editorial.css`            | Composição ampliada, proporções, ondas e adaptação dos novos blocos                       |
 | `app/interaction.css`          | Estados de navegação, progresso de leitura, atalhos e foco                                |
@@ -79,7 +84,7 @@ As entradas usam Web Animations e IntersectionObserver, com 42 blocos distribuí
 
 ## Preparação para publicação
 
-As informações foram conferidas com o arquivo `Briefing_Onboarding_Alfa_Engenharia.docx.pdf`, recebido após a primeira implementação, e com as diretrizes do solicitante. Não foram encontradas divergências factuais materiais no conteúdo público. O briefing informa a existência de logo, fotos e portfólio, mas não inclui esses materiais. Nenhuma informação cadastral foi verificada externamente. Veja `docs/CONFERENCIA_BRIEFING.md`.
+As informações foram conferidas com o briefing original e, nesta atualização, com `Portfólio - Alfa engenharia.pdf`, fornecido pelo solicitante. Os canais comerciais do briefing foram mantidos; o portfólio acrescentou serviços, responsáveis técnicos e fotos. Nenhuma informação cadastral foi verificada externamente. Veja `docs/CONFERENCIA_BRIEFING.md` e `docs/CONFERENCIA_PORTFOLIO.md`.
 
 A prévia emite `noindex, nofollow`. Depois de aprovar a publicação, preencher `SITE_URL` com a origem HTTPS real e definir `SITE_INDEXABLE=true`, conforme `.env.example`. Isso habilita a imagem de compartilhamento com URL absoluta e permite indexação. Canonical e sitemap ainda devem ser configurados para o domínio real antes do lançamento.
 

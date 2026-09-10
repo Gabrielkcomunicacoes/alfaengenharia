@@ -5,6 +5,7 @@ import { ContactForm } from "./ui/contact-form";
 import { SiteEnhancements } from "./ui/site-enhancements";
 import { WaveDivider } from "./ui/wave-divider";
 import { OfficialLogo } from "./ui/official-logo";
+import { Portfolio } from "./ui/portfolio";
 
 export default function Home() {
   return (
@@ -37,8 +38,8 @@ export default function Home() {
               >
                 Conversar sobre meu projeto <span aria-hidden="true">↗</span>
               </a>
-              <a className="text-link" href="#solucoes">
-                Conhecer as soluções <span aria-hidden="true">↓</span>
+              <a className="text-link" href="#portfolio">
+                Ver serviços realizados <span aria-hidden="true">↓</span>
               </a>
               <p className="location-note">
                 <span aria-hidden="true">↳</span> Atendimento a empresas em
@@ -169,24 +170,36 @@ export default function Home() {
                 Entender os próximos passos <span aria-hidden="true">↓</span>
               </a>
             </section>
-            <div className="other-services">
+            <section
+              className="other-services"
+              id="servicos-complementares"
+              tabIndex={-1}
+              aria-labelledby="other-services-title"
+            >
               <div data-reveal="left">
                 <p className="eyebrow">Outras frentes de atuação</p>
-                <h3>{content.other.title}</h3>
+                <h3 id="other-services-title">{content.other.title}</h3>
                 <p className="other-description">{content.other.description}</p>
+                <p className="other-description">{content.other.note}</p>
               </div>
-              <ul data-reveal="right">
-                {content.other.items.map((item, index) => (
-                  <li key={item}>
-                    <span className="other-number" aria-hidden="true">
-                      0{index + 1}
-                    </span>
-                    {item}
-                  </li>
+              <div className="complementary-groups" data-reveal="right">
+                {content.other.groups.map((group, index) => (
+                  <div className="complementary-group" key={group.title}>
+                    <h4>
+                      <span className="other-number" aria-hidden="true">
+                        0{index + 1}
+                      </span>
+                      {group.title}
+                    </h4>
+                    <ul>
+                      {group.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </section>
           </section>
+          <Portfolio />
         </div>
         <WaveDivider from="white" to="ink" reverse />
         <section
@@ -198,7 +211,7 @@ export default function Home() {
           <div className="container about-grid">
             <div className="about-statement" data-reveal="left">
               <p className="eyebrow">
-                <span className="section-marker">02 /</span> A Alfa
+                <span className="section-marker">03 /</span> A Alfa
               </p>
               <div className="since">
                 <span>DESDE</span>
@@ -223,14 +236,28 @@ export default function Home() {
             >
               <h2 id="about-title">{content.about.title}</h2>
               <p>{content.about.description}</p>
-              <div className="technical-lead">
-                <span className="eyebrow">Responsável técnico</span>
-                <p>
-                  {company.engineer}
-                  <span>{company.engineerCrea}</span>
-                </p>
-              </div>
+              <section className="technical-team" aria-labelledby="team-title">
+                <h3 className="eyebrow" id="team-title">Responsáveis técnicos</h3>
+                <ul>
+                  {content.about.team.map((member) => (
+                    <li key={member.registration}>
+                      <h4>{member.name}</h4>
+                      <p>{member.role}</p>
+                      <span className="team-registration">{member.registration}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             </div>
+          </div>
+          <div className="about-commitments container">
+            {content.about.commitments.map((item, index) => (
+              <div key={item.title} data-reveal data-reveal-delay={index * 60}>
+                <span className="eyebrow">0{index + 1} / Nosso compromisso</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
           </div>
           <div className="about-bottom container" data-reveal>
             <span>Engenharia feita por pessoas.</span>
@@ -264,7 +291,7 @@ export default function Home() {
         >
           <div className="section-heading" data-reveal>
             <p className="eyebrow section-label">
-              <span className="section-marker">03 /</span> Como contratar
+              <span className="section-marker">04 /</span> Como contratar
             </p>
             <div>
               <h2 id="process-title">{content.process.title}</h2>
@@ -357,7 +384,7 @@ export default function Home() {
         >
           <div className="contact-copy" data-reveal>
             <p className="eyebrow">
-              <span className="section-marker">04 /</span> Vamos conversar
+              <span className="section-marker">05 /</span> Vamos conversar
             </p>
             <h2 id="contact-title">{content.contact.title}</h2>
             <p className="section-intro">{content.contact.description}</p>

@@ -1,4 +1,5 @@
-// Fonte: Briefing_Onboarding_Alfa_Engenharia.docx.pdf (p. 4–11) e diretrizes do solicitante.
+// Fontes: briefing original (p. 4–11), Portfólio - Alfa engenharia.pdf (p. 2–11)
+// e diretrizes do solicitante. Contatos comerciais preservados conforme o briefing.
 // Conferência com o documento realizada; validação cadastral externa permanece pendente.
 export const company = {
   name: "Alfa Engenharia",
@@ -22,6 +23,7 @@ export const company = {
 export const content = {
   navigation: [
     { label: "Soluções", href: "#solucoes" },
+    { label: "Portfólio", href: "#portfolio" },
     { label: "A Alfa", href: "#a-alfa" },
     { label: "Como contratar", href: "#como-contratar" },
     { label: "Contato", href: "#contato" },
@@ -34,34 +36,77 @@ export const content = {
   hero: {
     eyebrow: "Engenharia civil, elétrica e mecânica",
     description:
-      "Manutenção predial, sistemas de combate a incêndio e instalações elétricas para equipamentos, com equipe especializada e coordenação técnica.",
+      "Da manutenção predial aos sistemas de combate a incêndio e às instalações elétricas: engenharia amazonense, com equipe experiente e coordenação técnica em cada obra.",
     message:
       "Olá, Alfa Engenharia! Gostaria de conversar sobre uma demanda de engenharia para minha empresa.",
   },
   solutions: {
     title: "Três frentes para cuidar da estrutura da sua empresa.",
     intro:
-      "Da manutenção recorrente à instalação de equipamentos, o trabalho começa pela definição do que a sua empresa precisa.",
+      "Conservação de edificações, manutenção de sistemas e instalação de equipamentos. Conheça as frentes prioritárias e encontre o atendimento para a sua empresa.",
   },
   other: {
-    title:
-      "Outras demandas de engenharia também fazem parte do nosso trabalho.",
+    title: "Da obra civil à manutenção mecânica.",
     description:
-      "A atuação da Alfa reúne diferentes frentes de engenharia. Apresente a sua necessidade para avaliar o serviço e definir o escopo da contratação.",
-    items: [
-      "Obras e reformas em alvenaria",
-      "Projetos de engenharia civil",
-      "Engenharia mecânica e montagens",
-      "Soldagem e serralheria",
-      "Pintura predial e industrial",
-      "Parede e forro em drywall",
-      "Visita e laudo técnico",
+      "A Alfa reúne serviços complementares para construir, recuperar e manter a estrutura da sua empresa. Cada contratação parte da avaliação da demanda.",
+    groups: [
+      {
+        title: "Construção e acabamento",
+        items: [
+          "Obras civis de pequeno e médio porte e reformas em alvenaria",
+          "Pintura predial e industrial e lavagem de fachadas",
+          "Paredes e forros em drywall",
+        ],
+      },
+      {
+        title: "Serralheria e montagens",
+        items: [
+          "Soldagem e serviços de serralheria em geral",
+          "Confecção e instalação de corrimãos e guarda-corpos",
+          "Montagens na área de engenharia mecânica",
+        ],
+      },
+      {
+        title: "Manutenção mecânica",
+        items: [
+          "Instalação, manutenção e limpeza de torres de resfriamento",
+          "Análise de vibração em motores elétricos e a combustão",
+          "Testes de performance em motores",
+        ],
+      },
     ],
+    note: "Projetos de engenharia civil, visitas e laudos técnicos também fazem parte da nossa atuação.",
   },
   about: {
     title: "Equipe experiente. Obras com coordenação técnica.",
     description:
-      "Desde 2013, a Alfa Engenharia atua nas áreas civil, elétrica e mecânica. A empresa conta com equipe treinada e experiente em obras de engenharia, com coordenação de engenheiro e encarregado durante a execução das obras.",
+      "Somos uma empresa amazonense, atuando desde 2013 nas áreas civil, elétrica e mecânica. Nossa equipe reúne profissionais treinados e experientes, com engenheiro e encarregado na coordenação das obras. Qualidade, segurança e eficiência orientam o nosso trabalho.",
+    team: [
+      {
+        name: "Edson Oliveira dos Santos",
+        role: "Engenheiro civil e engenheiro de segurança do trabalho",
+        registration: "CREA/AM 35787",
+      },
+      {
+        name: "Everton Oliveira dos Santos",
+        role: "Engenheiro civil, especialista em Engenharia de Segurança Contra Incêndio e Pânico",
+        registration: "CREA/AM 34637",
+      },
+    ],
+    commitments: [
+      {
+        title: "Qualidade na entrega",
+        description: "Atenção à execução e à eficiência em cada serviço.",
+      },
+      {
+        title: "Coordenação de projetos",
+        description: "Organização do trabalho e acompanhamento técnico das obras.",
+      },
+      {
+        title: "Compromisso com prazos",
+        description: "Planejamento da execução conforme o escopo acordado.",
+      },
+    ],
   },
   contracting: {
     eyebrow: "A contratação acompanha a sua demanda",
@@ -163,6 +208,11 @@ export const content = {
       answer:
         "Sim. A Alfa realiza visitas e laudos técnicos voltados a obras de engenharia, mediante avaliação do escopo solicitado.",
     },
+    {
+      question: "A Alfa também atua com manutenção mecânica?",
+      answer:
+        "Sim. A atuação inclui instalação, manutenção e limpeza de torres de resfriamento, além de análise de vibração e testes de performance em motores elétricos e a combustão. A equipe avalia as características da demanda para definir o serviço.",
+    },
   ],
   contact: {
     title: "Conte o que a sua empresa precisa.",
@@ -181,10 +231,10 @@ export const services = [
     navigationTitle: "Manutenção predial",
     category: "Cuidado contínuo com a estrutura",
     description:
-      "Contratos de manutenção predial com escopo definido a partir das necessidades da empresa e das características da estrutura.",
+      "Conservação e recuperação de edificações, com serviços civis, pintura e lavagem de fachadas. Os contratos são definidos conforme as necessidades da empresa e as características da estrutura.",
     note: "A contratação pode ser recorrente, com os serviços e as condições definidos em conjunto.",
     detail:
-      "Na visita técnica, a equipe conhece a estrutura e reúne as informações necessárias para elaborar uma proposta de manutenção predial em Manaus ou no interior do Amazonas.",
+      "O portfólio reúne intervenções em pisos, revestimentos e fachadas. A visita técnica ajuda a identificar as frentes de trabalho e a organizar uma proposta para a sua edificação.",
     start:
       "Apresente o contexto da edificação e as necessidades que sua empresa deseja avaliar.",
     cta: "Consultar manutenção predial",
@@ -201,7 +251,7 @@ export const services = [
       "Manutenção em sistemas de combate a incêndio, com serviços relacionados a casas de bombas, inspeções e testes, conforme a demanda e o escopo contratado.",
     note: "O escopo do contrato é definido a partir das necessidades do sistema.",
     detail:
-      "O entendimento da demanda e das características do sistema orienta a avaliação técnica. As atividades previstas, incluindo inspeções e testes, são tratadas conforme cada contratação.",
+      "A equipe técnica inclui especialista em Engenharia de Segurança Contra Incêndio e Pânico. As características do sistema orientam a avaliação e a definição das atividades de manutenção, inspeção e teste.",
     start:
       "Informe a cidade e descreva, em linhas gerais, a necessidade de manutenção do sistema.",
     cta: "Conversar sobre o sistema de incêndio",

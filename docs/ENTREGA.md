@@ -1,5 +1,7 @@
 # Entrega — versão institucional ampliada
 
+Atualização de 10/09/2026: o portfólio recebido foi incorporado à landing page, com três comparativos reais de antes/depois, serviços complementares e os dois responsáveis técnicos. A conferência e os limites da validação atual estão em `CONFERENCIA_PORTFOLIO.md`; os registros de testes visuais abaixo correspondem às revisões anteriores.
+
 ## Direção visual e conteúdo
 
 A proposta “Precisão técnica, presença e trabalho real” foi traduzida em uma composição editorial: tipografia Barlow Condensed nos títulos e Source Sans 3 no corpo, fundo mineral, grafite e terracota, módulos numerados amplos e divisórias estruturais. A revisão solicitada acrescenta seis ondas amplas, cada uma com um único ciclo, nas transições de fundo. O pedido posterior de ondas prevalece sobre a restrição visual do primeiro prompt.
@@ -14,7 +16,7 @@ O conteúdo foi ampliado nos três serviços prioritários e nas etapas de contr
 
 A revisão de UI/UX acrescenta sombras nas seis ondas, entradas por blocos ao longo de toda a página, navegação com seção atual, progresso de leitura e atalhos para cada serviço. Os efeitos respeitam movimento reduzido e não ocultam conteúdo sem JavaScript. O foco por teclado interrompe uma entrada em andamento no respectivo bloco. Resultados específicos em `artifacts/motion-report.json`.
 
-Não foram incluídos portfólio, clientes, depoimentos, estatísticas de carteira, certificações, garantia de resultados ou prazos universais. Atendimento atual: Manaus e interior do Amazonas. Não há materiais da K Comunicação na interface.
+O portfólio inclui pintura de fachada, corrimãos e lavagem de fachada, com imagens extraídas do material recebido. Não foram incluídos nomes ou logos de clientes, depoimentos, estatísticas de carteira, certificações, garantia de resultados ou prazos universais. Atendimento atual: Manaus e interior do Amazonas. Não há materiais da K Comunicação na interface.
 
 O briefing original foi recebido após a primeira implementação e conferido integralmente. Os dados públicos do site coincidem com o documento; o registro dessa conferência está em `docs/CONFERENCIA_BRIEFING.md`. O PDF permanece fora dos arquivos públicos do site.
 
@@ -33,7 +35,7 @@ O briefing original foi recebido após a primeira implementação e conferido in
 ## Pendências reais para lançamento
 
 1. **Identidade:** confirmar se existe manual de marca ou arquivos vetoriais oficiais. As logos recebidas são imagens JPEG; as versões PNG locais foram preparadas a partir delas. A paleta da interface acompanha visualmente a marca, mas permanece uma proposta até a confirmação de valores oficiais.
-2. **Fotografias, se desejadas:** o briefing informa existência de fotos e portfólio, sem incluir os materiais. Receber imagens autorizadas e revisar clientes, marcas, placas, documentos, telas, máquinas e processos identificáveis. A composição atual permite manter o site sem fotos. Para substituir o visual principal, preencher `approvedMedia.hero` com arquivo, texto alternativo e dimensões.
+2. **Fotografias:** seis imagens do portfólio recebido já foram selecionadas e incorporadas à galeria, conforme `CONFERENCIA_PORTFOLIO.md`. A abertura mantém a ilustração existente. Uma eventual substituição dessa imagem ou ampliação da galeria deve usar material autorizado e conferido quanto a clientes, marcas, documentos, máquinas e processos identificáveis.
 3. **Conferência cadastral:** validar razão social, CNPJ, endereço, contatos, responsável técnico e registros CREA informados antes da publicação.
 4. **Domínio e publicação:** confirmar o domínio e autorizar o ambiente de produção. Configurar `SITE_URL`, canonical, sitemap e indexação final. Os metadados de título e descrição já estão preparados; a imagem social aguarda a origem real.
 5. **Mensuração:** receber identificadores, definir eventos e configuração de consentimento antes de ativar qualquer ferramenta. O adaptador permanece desativado.
