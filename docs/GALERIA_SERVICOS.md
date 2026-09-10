@@ -21,3 +21,11 @@ A galeria “A Alfa em campo” complementa os comparativos existentes no portf�
 As legendas descrevem apenas o conteúdo visível. Não foram atribuídos clientes, localização, datas de execução, certificações ou resultados não informados. A orientação anterior sobre excluir máquinas e processos identificáveis foi superada pelo pedido explícito de incluir estas fotografias.
 
 Validação: build Next.js e lint aprovados; página local com nove fotos novas e seis anteriores. Os 27 arquivos (nove originais e 18 versões WebP) responderam HTTP 200, com bytes iguais aos arquivos locais e dimensões conferidas. Os hashes dos JPEGs permaneceram inalterados. A revisão de código verificou semântica, acessibilidade e regras responsivas; não foi realizada inspeção visual do site no navegador nesta atualização.
+
+## Recuperação de falhas no carregamento
+
+Após o relato de uma foto quebrada, as versões WebP e o JPEG de `img-sete.jpg` foram novamente conferidos nos dois endereços do Vercel: HTTP 200, bytes íntegros e decodificação completa. A falha específica não se repetiu na navegação de diagnóstico.
+
+A galeria agora tenta o JPEG original uma vez quando uma imagem otimizada falha, removendo `srcset` e `sizes` antes da troca. O tratamento também cobre falhas ocorridas antes da hidratação e não interfere nas fotos que ainda aguardam carregamento adiado. O listener é removido na desmontagem.
+
+`tests/gallery-image-check.mjs` verificou as nove fotos e a ausência de rolagem horizontal em 1440 e 390 px. O bloqueio de downloads WebP no navegador confirmou a recuperação por JPEG; o bloqueio simultâneo do JPEG confirmou que não há repetição infinita. A captura do cenário recuperado foi inspecionada. Build e lint passaram. Os relatórios e a captura ficam em `artifacts/gallery-image-check.json` e `artifacts/gallery-image-recovered.png`.

@@ -11,6 +11,26 @@ export function SiteEnhancements() {
     const animations = new Map<Animation, HTMLElement>();
     let observer: IntersectionObserver | undefined;
 
+    // Recover a failed responsive image once using its independent JPEG source.
+    function restoreOriginal(image: HTMLImageElement) {
+      const original = image.dataset.originalSrc;
+      if (!original) return;
+      if (image.getAttribute("src") === original && !image.hasAttribute("srcset"))
+        return;
+      image.removeAttribute("srcset");
+      image.removeAttribute("sizes");
+      image.src = original;
+    }
+    const onImageError = (event: Event) => {
+      if (event.target instanceof HTMLImageElement) restoreOriginal(event.target);
+    };
+    document.addEventListener("error", onImageError, true);
+    document.querySelectorAll<HTMLImageElement>("img[data-original-src]").forEach((image) => {
+      // Image errors can happen before React hydrates. Pending lazy images are
+      // not complete and must retain their optimized source until requested.
+      if (image.complete && image.naturalWidth === 0) restoreOriginal(image);
+    });
+
     function reveal(element: HTMLElement) {
       if (seen.has(element)) return;
       seen.add(element);
@@ -116,6 +136,7 @@ export function SiteEnhancements() {
       reducedMotion.removeEventListener("change", configureMotion);
       document.removeEventListener("focusin", onFocus);
       document.removeEventListener("click", handleClick);
+      document.removeEventListener("error", onImageError, true);
     };
   }, []);
   return null;
