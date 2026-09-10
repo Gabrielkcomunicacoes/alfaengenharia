@@ -1,13 +1,13 @@
 // Fontes: briefing original (p. 4–11), Portfólio - Alfa engenharia.pdf (p. 2–11)
-// e diretrizes do solicitante. Contatos comerciais preservados conforme o briefing.
+// e diretrizes do solicitante. WhatsApp atualizado conforme indicação do solicitante.
 // Conferência com o documento realizada; validação cadastral externa permanece pendente.
 export const company = {
   name: "Alfa Engenharia",
   legalName: "Alfa Serviços e Construção Ltda — EPP",
   cnpj: "19.147.975/0001-75",
   founded: "2013-10-28",
-  phone: "(92) 99437-0127",
-  whatsapp: "https://wa.me/5592994370127",
+  phone: "(92) 98848-2850",
+  whatsapp: "https://wa.me/5592988482850",
   email: "comercial@alfaengenhariaam.com.br",
   instagram: "https://www.instagram.com/alfaengenhariaam/",
   instagramLabel: "@alfaengenhariaam",
@@ -84,8 +84,8 @@ export const content = {
     team: [
       {
         name: "Edson Oliveira dos Santos",
-        role: "Engenheiro civil e engenheiro de segurança do trabalho",
-        registration: "CREA/AM 35787",
+        role: "Engenheiro Civil / Engenheiro de Segurança do Trabalho",
+        registration: "Crea/AM 35787",
       },
       {
         name: "Everton Oliveira dos Santos",
@@ -280,10 +280,18 @@ export const services = [
 export function whatsappUrl(message: string = content.hero.message): string {
   return `${company.whatsapp}?text=${encodeURIComponent(message)}`;
 }
-// Para uma foto futura, usar apenas arquivo local previamente autorizado.
+// Banner adaptado da foto fornecida pelo solicitante, com laterais expandidas.
 export const approvedMedia: {
-  hero: null | { src: string; alt: string; width: number; height: number };
-} = { hero: null };
+  hero: null | { src: string; srcSet?: string; alt: string; width: number; height: number };
+} = {
+  hero: {
+    src: "/images/hero-alfa-engenharia.webp",
+    srcSet: "/images/hero-alfa-engenharia-960.webp 960w, /images/hero-alfa-engenharia.webp 1672w",
+    alt: "Profissionais com capacetes em um canteiro de obras, com a marca Alfa Engenharia na parte superior.",
+    width: 1672,
+    height: 941,
+  },
+};
 
 // Arte abstrata ilustrativa: não representa uma obra, cliente ou identidade oficial.
 export const illustrativeMedia = {

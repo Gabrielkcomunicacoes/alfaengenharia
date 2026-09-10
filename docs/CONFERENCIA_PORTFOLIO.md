@@ -38,7 +38,7 @@ A arte abstrata da abertura e a arte social existentes foram preservadas. Não f
 
 ## Divergências e limites de fonte
 
-- Foram preservados WhatsApp `(92) 99437-0127`, e-mail `comercial@alfaengenhariaam.com.br` e dados cadastrais do briefing anterior. O portfólio traz dois telefones fixos e e-mail administrativo; não comprova substituição dos canais comerciais.
+- O WhatsApp foi atualizado para `(92) 98848-2850` por indicação direta do solicitante em 10/09/2026. Foram preservados o e-mail `comercial@alfaengenhariaam.com.br` e os dados cadastrais do briefing anterior. O portfólio traz dois telefones fixos e e-mail administrativo; não comprova substituição dos demais canais comerciais.
 - A página 2 associa a NR-35 à altura de 1,80 m. Esse limite e a alegação de conformidade normativa não foram reproduzidos. A landing page apresenta segurança como compromisso, sem oferecer orientação normativa.
 - O selo de associação individual à NFPA não foi apresentado como certificação da empresa.
 - Logos e nomes de clientes, máquinas e processos identificáveis não foram incorporados, conforme os limites já registrados no briefing.

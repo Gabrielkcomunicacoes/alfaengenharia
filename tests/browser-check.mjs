@@ -92,7 +92,7 @@ check(
 check(
   "Todos os links WhatsApp usam o número comercial",
   documentAudit.wa.every(
-    (link) => new URL(link.href).pathname === "/5592994370127",
+    (link) => new URL(link.href).pathname === "/5592988482850",
   ),
 );
 const contextual = documentAudit.wa.filter((link) => link.service);

@@ -6,15 +6,16 @@ export function Architecture() {
   const approved = approvedMedia.hero;
   const picture = approved ?? illustrativeMedia.hero;
   return (
-    <figure className="architecture">
+    <figure className={`architecture${approved ? " architecture-photo" : ""}`}>
       <div className="architecture-frame">
         <img
+          className="architecture-image"
           data-reveal="image"
           src={picture.src}
           srcSet={
-            !approved
-              ? `${illustrativeMedia.hero.small} 960w, ${picture.src} 2172w`
-              : undefined
+            approved
+              ? approved.srcSet
+              : `${illustrativeMedia.hero.small} 960w, ${picture.src} 2172w`
           }
           sizes="(max-width: 599px) 100vw, (max-width: 1400px) 92vw, 1280px"
           alt={approved?.alt ?? ""}
@@ -22,9 +23,11 @@ export function Architecture() {
           height={picture.height}
           fetchPriority="high"
         />
-        <span className="architecture-index" aria-hidden="true">
-          <OfficialLogo variant="symbol" decorative />
-        </span>
+        {!approved && (
+          <span className="architecture-index" aria-hidden="true">
+            <OfficialLogo variant="symbol" decorative />
+          </span>
+        )}
       </div>
       <figcaption className="architecture-caption" data-reveal>
         <span>Estrutura · Sistemas · Execução</span>

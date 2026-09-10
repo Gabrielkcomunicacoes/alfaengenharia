@@ -72,12 +72,16 @@
   overflow: hidden;
   background: #e7dfd1;
 }
-.architecture img {
+.architecture-image {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 3;
   object-fit: cover;
+}
+.architecture-photo .architecture-image {
+  aspect-ratio: 16 / 9;
+  object-position: center;
 }
 .architecture-index {
   position: absolute;
@@ -925,7 +929,7 @@
   .hero-aside > .text-link {
     margin-top: 6px;
   }
-  .architecture img {
+  .architecture-image {
     aspect-ratio: 2.5;
     object-position: 55% center;
   }
@@ -1159,9 +1163,13 @@
   .architecture {
     margin-inline: calc(-1 * var(--gutter));
   }
-  .architecture img {
+  .architecture-image {
     aspect-ratio: 1.65;
     object-position: 58% center;
+  }
+  .architecture-photo .architecture-image {
+    aspect-ratio: 1;
+    object-position: center;
   }
   .architecture-index {
     left: var(--gutter);
