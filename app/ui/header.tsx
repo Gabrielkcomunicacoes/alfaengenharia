@@ -1,12 +1,14 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { content, whatsappUrl } from "../site-content";
 import { OfficialLogo } from "./official-logo";
 export function Header() {
   const menu = useRef<HTMLDetailsElement>(null);
   const header = useRef<HTMLElement>(null);
   const progress = useRef<HTMLSpanElement>(null);
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
   function closeMenu(returnFocus = false) {
     if (!menu.current) return;
     menu.current.open = false;
@@ -36,69 +38,31 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = content.navigation.map((item) => ({
-      href: item.href,
-      element: document.querySelector<HTMLElement>(item.href),
-      top: 0,
-    }));
+    // Progress reflects scroll position within the current page only.
     let frame = 0;
-    let disposed = false;
-    let scrollRange = 1;
-    let activationOffset = 140;
-    let previousSection = "";
-
     const paint = () => {
       frame = 0;
-      const y = window.scrollY;
-      const value = Math.min(1, Math.max(0, y / scrollRange));
-      if (progress.current)
-        progress.current.style.transform = `scaleX(${value})`;
-      header.current?.toggleAttribute("data-scrolled", y > 32);
-      let current = "";
-      for (const section of sections) {
-        if (section.element && section.top <= y + activationOffset)
-          current = section.href;
-      }
-      // State changes only at section boundaries, never on every animation frame.
-      if (current !== previousSection) {
-        previousSection = current;
-        setActiveSection(current);
-      }
+      const range = Math.max(
+        1,
+        document.documentElement.scrollHeight - window.innerHeight,
+      );
+      const value = Math.min(1, Math.max(0, window.scrollY / range));
+      if (progress.current) progress.current.style.transform = `scaleX(${value})`;
+      header.current?.toggleAttribute("data-scrolled", window.scrollY > 32);
     };
     const schedule = () => {
       if (!frame) frame = window.requestAnimationFrame(paint);
     };
-    const measure = () => {
-      if (disposed) return;
-      for (const section of sections) {
-        section.top = section.element
-          ? section.element.getBoundingClientRect().top + window.scrollY
-          : Infinity;
-      }
-      scrollRange = Math.max(
-        1,
-        document.documentElement.scrollHeight - window.innerHeight,
-      );
-      activationOffset = (header.current?.offsetHeight || 90) + 56;
-      schedule();
-    };
-    const resize =
-      typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(measure)
-        : undefined;
-    resize?.observe(document.body);
     window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", measure);
-    document.fonts.ready.then(measure);
-    measure();
+    window.addEventListener("resize", schedule);
+    paint();
     return () => {
-      disposed = true;
-      resize?.disconnect();
       window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", schedule);
     };
-  }, []);
+  }, [pathname]);
+
   return (
     <>
       <a className="skip-link" href="#conteudo">
@@ -106,24 +70,18 @@ export function Header() {
       </a>
       <header className="site-header" ref={header}>
         <div className="header-inner container">
-          <a
-            href="#"
-            className="brand-home"
-            aria-label="Alfa Engenharia, início"
-          >
+          <Link href="/" className="brand-home" aria-label="Alfa Engenharia, início">
             <OfficialLogo decorative />
-          </a>
+          </Link>
           <nav className="desktop-nav" aria-label="Navegação principal">
             {content.navigation.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                aria-current={
-                  activeSection === item.href ? "location" : undefined
-                }
+                aria-current={pathname === item.href ? "page" : undefined}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <a
@@ -137,31 +95,21 @@ export function Header() {
             Falar com a Alfa <span aria-hidden="true">↗</span>
           </a>
           <details className="mobile-menu" ref={menu}>
-            <summary
-              aria-label="Menu de navegação"
-              aria-controls="mobile-navigation"
-            >
+            <summary aria-label="Menu de navegação" aria-controls="mobile-navigation">
               <span className="menu-label">Menu</span>
               <span className="menu-lines" aria-hidden="true" />
             </summary>
             <nav id="mobile-navigation" aria-label="Navegação mobile">
               {content.navigation.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
-                  aria-current={
-                    activeSection === item.href ? "location" : undefined
-                  }
-                  onClick={() => {
-                    closeMenu();
-                    document
-                      .querySelector<HTMLElement>(item.href)
-                      ?.focus({ preventScroll: true });
-                  }}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={() => closeMenu()}
                 >
                   {item.label}
                   <span aria-hidden="true">↗</span>
-                </a>
+                </Link>
               ))}
               <a
                 className="mobile-contact"

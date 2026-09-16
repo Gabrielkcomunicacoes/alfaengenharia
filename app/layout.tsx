@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { content } from "./site-content";
+import { SiteEnhancements } from "./ui/site-enhancements";
 import "./globals.css";
 import "./editorial.css";
 import "./interaction.css";
@@ -83,6 +84,7 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <SiteEnhancements />
       </body>
     </html>
   );

@@ -22,16 +22,41 @@ export const company = {
 
 export const content = {
   navigation: [
-    { label: "Soluções", href: "#solucoes" },
-    { label: "Portfólio", href: "#portfolio" },
-    { label: "A Alfa", href: "#a-alfa" },
-    { label: "Como contratar", href: "#como-contratar" },
-    { label: "Contato", href: "#contato" },
+    { label: "Início", href: "/" },
+    { label: "Serviços", href: "/servicos" },
+    { label: "Portfólio", href: "/portfolio" },
+    { label: "A Alfa", href: "/sobre" },
+    { label: "Contato", href: "/contato" },
   ],
   seo: {
     title: "Alfa Engenharia | Manutenção e Engenharia em Manaus",
     description:
       "Desde 2013, engenharia civil, elétrica e mecânica para empresas. Manutenção predial, sistemas de combate a incêndio e instalação elétrica para equipamentos em Manaus e no interior do Amazonas.",
+    servicos: {
+      title: "Serviços | Alfa Engenharia",
+      description:
+        "Manutenção predial, sistemas de combate a incêndio e instalações elétricas para equipamentos, além de obra civil, serralheria e manutenção mecânica. Conheça as frentes de atuação da Alfa Engenharia.",
+    },
+    portfolio: {
+      title: "Portfólio | Alfa Engenharia",
+      description:
+        "Fotos de antes e depois de serviços executados pela Alfa Engenharia: pintura e revitalização de fachadas, serralheria, manutenção predial e mais.",
+    },
+    sobre: {
+      title: "A Alfa | Alfa Engenharia",
+      description:
+        "Conheça a Alfa Engenharia: empresa amazonense com atuação nas áreas civil, elétrica e mecânica desde 2013, com engenheiro e encarregado coordenando cada obra.",
+    },
+    contato: {
+      title: "Contato | Alfa Engenharia",
+      description:
+        "Fale com a Alfa Engenharia pelo WhatsApp ou e-mail e apresente a demanda da sua empresa. Atendimento em Manaus e no interior do Amazonas.",
+    },
+    lp: {
+      title: "Orçamento de engenharia em Manaus | Alfa Engenharia",
+      description:
+        "Manutenção predial, sistemas de combate a incêndio e instalações elétricas para a sua empresa. Fale agora com a Alfa Engenharia pelo WhatsApp.",
+    },
   },
   hero: {
     eyebrow: "Engenharia civil, elétrica e mecânica",
@@ -105,6 +130,27 @@ export const content = {
       {
         title: "Compromisso com prazos",
         description: "Planejamento da execução conforme o escopo acordado.",
+      },
+    ],
+  },
+  mission: {
+    eyebrow: "Missão, visão e valores",
+    title: "O que orienta o trabalho da Alfa.",
+    items: [
+      {
+        title: "Missão",
+        description:
+          "Executar engenharia civil, elétrica e mecânica com qualidade e coordenação técnica, cuidando da estrutura das empresas atendidas em Manaus e no interior do Amazonas.",
+      },
+      {
+        title: "Visão",
+        description:
+          "Ser reconhecida no Amazonas como uma empresa de engenharia confiável, pela qualidade da execução e pela relação de longo prazo com quem contrata.",
+      },
+      {
+        title: "Valores",
+        description:
+          "Qualidade na entrega, segurança do trabalho, coordenação técnica em cada obra e compromisso com os prazos combinados.",
       },
     ],
   },
@@ -220,6 +266,16 @@ export const content = {
       "Fale com a Alfa para apresentar sua demanda e entender os próximos passos.",
     formNote:
       "Você será direcionado ao WhatsApp para conferir e enviar a mensagem.",
+  },
+  lp: {
+    eyebrow: "Orçamento sem compromisso",
+    title: "Engenharia para a estrutura da sua empresa, com quem atua em Manaus desde 2013.",
+    description:
+      "Manutenção predial, sistemas de combate a incêndio e instalações elétricas para equipamentos. Fale agora com a Alfa Engenharia e receba um retorno sobre a sua demanda.",
+    message:
+      "Olá, Alfa Engenharia! Vi o anúncio e gostaria de um orçamento para minha empresa.",
+    cta: "Falar agora no WhatsApp",
+    badges: ["Desde 2013", "CREA/AM 8607", "Manaus e interior do AM"],
   },
 } as const;
 

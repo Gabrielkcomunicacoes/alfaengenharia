@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element -- Fotografias locais otimizadas, com dimensões explícitas e acesso ao arquivo original. */
+import Link from "next/link";
 import { portfolio } from "../portfolio-content";
 import { workPhotos } from "../work-photos";
 import { WorkGallery } from "./work-gallery";
@@ -63,16 +64,16 @@ export function Portfolio() {
               <p className="eyebrow">{project.category}</p>
               <h3 id={`project-${project.id}`}>{project.title}</h3>
               <p>{project.description}</p>
-              <a
+              <Link
                 className="text-link"
                 href={
                   project.service === "complementares"
-                    ? "#servicos-complementares"
-                    : `#servico-${project.service}`
+                    ? "/servicos#servicos-complementares"
+                    : `/servicos#servico-${project.service}`
                 }
               >
                 {project.link} <span aria-hidden="true">↗</span>
-              </a>
+              </Link>
             </div>
           </article>
         ))}
@@ -80,9 +81,9 @@ export function Portfolio() {
       <WorkGallery photos={workPhotos} />
       <div className="portfolio-bottom" data-reveal>
         <p>Fotos do portfólio da Alfa Engenharia. Selecione uma foto para ampliar.</p>
-        <a className="text-link" href="#contato">
+        <Link className="text-link" href="/contato">
           Vamos cuidar da sua estrutura? <span aria-hidden="true">↗</span>
-        </a>
+        </Link>
       </div>
     </section>
   );
