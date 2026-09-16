@@ -24,8 +24,8 @@ export function WorkGallery({ photos }: { photos: readonly WorkPhoto[] }) {
           <h3 id="work-gallery-title">A Alfa em campo.</h3>
         </div>
         <p>
-          Instalações, manutenção mecânica e trabalhos em fachadas.
-          Selecione uma foto para ver os detalhes.
+          Instalações, manutenção mecânica, sistemas de combate a incêndio e
+          trabalhos em fachadas. Selecione uma foto para ver os detalhes.
         </p>
       </div>
       <div className="work-gallery-photos">
