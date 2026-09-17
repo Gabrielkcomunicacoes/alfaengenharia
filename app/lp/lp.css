@@ -4,6 +4,8 @@
 .lp-main {
   display: block;
 }
+
+/* Hero */
 .lp-hero {
   padding-top: 64px;
   padding-bottom: 40px;
@@ -47,74 +49,400 @@
   background: var(--accent);
   flex-shrink: 0;
 }
-.lp-services {
-  padding-block: 32px;
+
+/* Pain points */
+.lp-pain {
+  padding-block: 44px;
+  border-top: 1px solid var(--line);
 }
-.lp-service-chips {
+.lp-pain h2 {
+  margin-top: 16px;
+  font-size: clamp(28px, 3.2vw, 40px);
+  max-width: 760px;
+  text-wrap: balance;
+}
+.lp-pain-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 32px;
+}
+.lp-pain-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.lp-pain-list li span {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4dede;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.lp-pain-bridge {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-size: 18px;
+  max-width: 760px;
+}
+
+/* Services */
+.lp-services {
+  padding-block: 44px;
+  border-top: 1px solid var(--line);
+}
+.lp-services > .eyebrow {
+  margin-bottom: 24px;
+}
+.lp-service-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
-.lp-chip {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 20px;
+.lp-service-card {
+  padding: 26px 24px;
   border: 1px solid var(--line);
   background: var(--white);
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
 }
-.lp-chip:hover {
-  border-color: var(--accent);
-}
-.lp-chip-number {
+.lp-service-card-number {
   font-family: var(--heading);
-  font-size: 22px;
+  font-size: 30px;
   color: var(--accent);
 }
-.lp-chip-title {
-  flex: 1;
+.lp-service-card h3 {
+  margin-top: 14px;
+  font-size: 26px;
+  line-height: 1.1;
 }
+.lp-service-card p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+.lp-service-card .text-link {
+  margin-top: 20px;
+  color: var(--accent);
+  font-size: 15px;
+  gap: 12px;
+}
+
+/* Differentiators */
+.lp-why {
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+}
+.lp-why h2 {
+  margin-top: 16px;
+  font-size: clamp(28px, 3.2vw, 40px);
+  max-width: 640px;
+}
+.lp-why-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 40px;
+}
+.lp-why-item {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.lp-why-item h3 {
+  font-size: 22px;
+}
+.lp-why-item p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Proof */
 .lp-proof {
-  padding-block: 40px;
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+}
+.lp-proof h2 {
+  margin-top: 12px;
+  font-size: clamp(28px, 3.2vw, 40px);
 }
 .lp-proof-grid {
-  margin-top: 20px;
+  margin-top: 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 24px;
 }
-.lp-proof-item img {
+.lp-proof-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.lp-proof-images span {
+  position: relative;
+  display: block;
+}
+.lp-proof-images img {
   width: 100%;
-  height: 240px;
+  height: 170px;
   object-fit: cover;
   display: block;
 }
+.lp-proof-images em {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: var(--ink);
+  color: var(--white);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 3px 7px;
+}
 .lp-proof-item figcaption {
-  margin-top: 10px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lp-proof-item figcaption strong {
+  font-size: 16px;
+}
+.lp-proof-item figcaption span {
   font-size: 14px;
   color: var(--muted);
 }
+
+/* Team */
+.lp-team {
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+  max-width: 900px;
+}
+.lp-team h2 {
+  margin-top: 16px;
+  font-size: clamp(28px, 3.2vw, 40px);
+}
+.lp-team-description {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.lp-team-list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.lp-team-list li {
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lp-team-list strong {
+  font-family: var(--heading);
+  font-size: 22px;
+  font-weight: 600;
+}
+.lp-team-list span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.lp-team-registration {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+/* Process */
+.lp-process {
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+}
+.lp-process h2 {
+  margin-top: 12px;
+  font-size: clamp(28px, 3.2vw, 40px);
+  max-width: 680px;
+}
+.lp-process-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.lp-process-number {
+  font-family: var(--heading);
+  font-size: 34px;
+  color: var(--accent);
+}
+.lp-process-list h3 {
+  margin-top: 12px;
+  font-size: 24px;
+}
+.lp-process-list p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.lp-process-detail {
+  color: var(--muted);
+  margin-top: 8px !important;
+}
+.lp-process-note {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* FAQ */
+.lp-faq {
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+  max-width: 900px;
+}
+.lp-faq h2 {
+  margin-top: 12px;
+  font-size: clamp(28px, 3.2vw, 40px);
+}
+.lp-faq-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.lp-faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+.lp-faq-list summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 70px;
+  padding: 16px 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+.lp-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.lp-faq-toggle {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  position: relative;
+}
+.lp-faq-toggle:before,
+.lp-faq-toggle:after {
+  content: "";
+  background: var(--accent);
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 1px;
+  width: 14px;
+}
+.lp-faq-toggle:after {
+  transform: rotate(90deg);
+  transition: transform 180ms;
+}
+.lp-faq-list details[open] .lp-faq-toggle:after {
+  transform: rotate(0);
+}
+.lp-faq-list details > p {
+  padding-bottom: 22px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 680px;
+}
+
+/* Form */
 .lp-form {
   padding-block: 48px 64px;
+  border-top: 1px solid var(--line);
   max-width: 720px;
 }
 .lp-form h2 {
   margin-top: 12px;
   font-size: clamp(28px, 3.4vw, 38px);
 }
+.lp-form-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 16px;
+}
 .lp-form .form-panel {
   margin-top: 28px;
 }
 .lp-footer {
   border-top: 1px solid var(--line);
-  padding-block: 24px;
+  padding-block: 24px 90px;
   font-size: 13px;
   color: var(--muted);
 }
+
+/* Sticky mobile CTA */
+.lp-sticky-cta {
+  display: none;
+}
+
 @media (max-width: 800px) {
-  .lp-service-chips,
-  .lp-proof-grid {
+  .lp-pain-list,
+  .lp-service-cards,
+  .lp-why-grid,
+  .lp-proof-grid,
+  .lp-team-list,
+  .lp-process-list {
     grid-template-columns: 1fr;
+  }
+  .lp-proof-images img {
+    height: 220px;
+  }
+  .lp-footer {
+    padding-bottom: 90px;
+  }
+  .lp-sticky-cta {
+    position: fixed;
+    z-index: 40;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    min-height: 54px;
+    padding: 14px 22px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 10px 24px rgb(0 0 0 / 25%);
+  }
+  .lp-sticky-cta:hover {
+    background: var(--accent-hover);
   }
 }
