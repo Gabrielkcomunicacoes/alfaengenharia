@@ -6,6 +6,9 @@ import { PortfolioTeaser } from "./ui/sections/portfolio-teaser";
 import { ServicesTeaser } from "./ui/sections/services-teaser";
 import { AboutTeaser } from "./ui/sections/about-teaser";
 import { RegionSection } from "./ui/sections/region-section";
+import { StatsStrip } from "./ui/sections/stats-strip";
+import { AreasSection } from "./ui/sections/areas-section";
+import { DifferentialsSection } from "./ui/sections/differentials-section";
 import { ProcessSection } from "./ui/sections/process-section";
 import { ContactSection } from "./ui/sections/contact-section";
 
@@ -17,12 +20,15 @@ export default function Home() {
         <HeroSection />
         <WaveDivider from="paper" to="white" />
         <div className="surface-white">
+          <StatsStrip />
           <ServicesTeaser />
+          <AreasSection />
           <PortfolioTeaser />
         </div>
         <WaveDivider from="white" to="ink" reverse />
         <AboutTeaser />
         <WaveDivider from="ink" to="paper" />
+        <DifferentialsSection />
         <RegionSection />
         <ProcessSection />
         <ContactSection />

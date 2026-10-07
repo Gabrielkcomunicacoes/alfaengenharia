@@ -102,6 +102,75 @@ export const content = {
     ],
     note: "Projetos de engenharia civil, visitas e laudos técnicos também fazem parte da nossa atuação.",
   },
+  areas: {
+    eyebrow: "Áreas de atuação",
+    title: "Tudo o que a sua estrutura precisa, organizado por área.",
+    intro:
+      "Quatro áreas de engenharia, com serviços definidos a partir da avaliação da sua demanda.",
+    items: [
+      {
+        title: "Civil e predial",
+        items: [
+          "Manutenção predial",
+          "Obras civis e reformas",
+          "Pintura e lavagem de fachadas",
+          "Paredes e forros em drywall",
+          "Projetos, visitas e laudos técnicos",
+        ],
+      },
+      {
+        title: "Elétrica",
+        items: [
+          "Instalação elétrica para equipamentos",
+          "Manutenção elétrica",
+          "Avaliação da demanda e definição do escopo técnico",
+        ],
+      },
+      {
+        title: "Mecânica e serralheria",
+        items: [
+          "Torres de resfriamento: instalação, manutenção e limpeza",
+          "Análise de vibração e testes de performance em motores",
+          "Soldagem, corrimãos e guarda-corpos",
+          "Montagens de engenharia mecânica",
+        ],
+      },
+      {
+        title: "Combate a incêndio",
+        items: [
+          "Manutenção de sistemas de combate a incêndio",
+          "Serviços em casas de bombas",
+          "Inspeções e testes",
+        ],
+      },
+    ],
+  },
+  differentials: {
+    eyebrow: "Por que a Alfa",
+    title: "Responsabilidade técnica de quem assina a obra.",
+    items: [
+      {
+        title: "Engenheiros responsáveis",
+        description:
+          "Dois engenheiros civis na equipe, com registro no CREA/AM, acompanhando as obras.",
+      },
+      {
+        title: "Segurança do trabalho",
+        description:
+          "Engenheiro de Segurança do Trabalho na coordenação e atenção à segurança em cada serviço.",
+      },
+      {
+        title: "Especialista em incêndio e pânico",
+        description:
+          "Engenheiro especialista em Segurança Contra Incêndio e Pânico para os sistemas de combate a incêndio.",
+      },
+      {
+        title: "Atendimento regional",
+        description:
+          "Sediada em Manaus, com atendimento a empresas do interior do Amazonas.",
+      },
+    ],
+  },
   about: {
     title: "Equipe experiente. Obras com coordenação técnica.",
     description:
