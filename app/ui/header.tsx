@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { content, whatsappUrl } from "../site-content";
+import { company, content, whatsappUrl } from "../site-content";
 import { OfficialLogo } from "./official-logo";
 export function Header() {
   const menu = useRef<HTMLDetailsElement>(null);
@@ -74,16 +74,46 @@ export function Header() {
             <OfficialLogo decorative />
           </Link>
           <nav className="desktop-nav" aria-label="Navegação principal">
-            {content.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {content.navigation.map((item) =>
+              "children" in item ? (
+                <div className="nav-item has-dropdown" key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    aria-haspopup="true"
+                  >
+                    {item.label} <span className="nav-caret" aria-hidden="true" />
+                  </Link>
+                  <ul className="dropdown" aria-label={item.label}>
+                    {item.children.map((child) => (
+                      <li key={child.href}>
+                        <Link href={child.href}>{child.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
           </nav>
+          <a
+            className="header-mail"
+            href={`mailto:${company.email}`}
+            aria-label="Enviar e-mail para a Alfa Engenharia"
+            data-track="email"
+            data-location="header"
+          >
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.6 2 7.4 5.6L19.4 7H4.6ZM20 8.7l-8 6.1-8-6.1V17h16V8.7Z" />
+            </svg>
+          </a>
           <a
             className="button button-header"
             href={whatsappUrl()}
@@ -101,15 +131,30 @@ export function Header() {
             </summary>
             <nav id="mobile-navigation" aria-label="Navegação mobile">
               {content.navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={pathname === item.href ? "page" : undefined}
-                  onClick={() => closeMenu()}
-                >
-                  {item.label}
-                  <span aria-hidden="true">↗</span>
-                </Link>
+                <div className="mobile-group" key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    onClick={() => closeMenu()}
+                  >
+                    {item.label}
+                    <span aria-hidden="true">↗</span>
+                  </Link>
+                  {"children" in item
+                    ? item.children
+                        .filter((child) => child.href !== item.href)
+                        .map((child) => (
+                          <Link
+                            key={child.href}
+                            className="mobile-sub"
+                            href={child.href}
+                            onClick={() => closeMenu()}
+                          >
+                            {child.label}
+                          </Link>
+                        ))
+                    : null}
+                </div>
               ))}
               <a
                 className="mobile-contact"

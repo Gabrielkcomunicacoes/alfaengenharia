@@ -1,45 +1,61 @@
 import Link from "next/link";
-import { content, services } from "../../site-content";
+import { services } from "../../site-content";
+
+// Fotos reais do portfólio, uma por frente de atuação.
+const photos: Record<string, { id: string; width: number; height: number; alt: string }> = {
+  predial: {
+    id: "infraestrutura-predial",
+    width: 900,
+    height: 1600,
+    alt: "Ambiente em obra com dutos e tubulações aparentes no teto.",
+  },
+  incendio: {
+    id: "equipe-manutencao-bombas",
+    width: 900,
+    height: 1600,
+    alt: "Equipe da Alfa fazendo manutenção em bomba de combate a incêndio.",
+  },
+  eletrica: {
+    id: "teste-motor-bomba",
+    width: 900,
+    height: 1600,
+    alt: "Profissional da Alfa em teste de motor e bomba.",
+  },
+};
 
 export function ServicesTeaser() {
   return (
-    <section
-      className="solutions container section-space"
-      aria-labelledby="solutions-title"
-    >
-      <div className="section-heading" data-reveal>
-        <p className="eyebrow section-label">
-          <span className="section-marker">01 /</span> Soluções prioritárias
-        </p>
-        <div>
-          <h2 id="solutions-title">{content.solutions.title}</h2>
-          <p className="section-intro">{content.solutions.intro}</p>
+    <section className="services-home section-space" aria-labelledby="solutions-title">
+      <div className="container">
+        <div className="title-block" data-reveal>
+          <h2 id="solutions-title">Nossos Serviços</h2>
+          <span className="title-rule" aria-hidden="true" />
+        </div>
+        <div className="service-cards">
+          {services.map((service, index) => {
+            const photo = photos[service.id];
+            return (
+              <article key={service.id} data-reveal data-reveal-delay={index * 60}>
+                <Link href={`/servicos#servico-${service.id}`} className="service-card-image">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/images/portfolio/servicos/${photo.id}-640.webp`}
+                    width={photo.width}
+                    height={photo.height}
+                    loading="lazy"
+                    alt={photo.alt}
+                  />
+                </Link>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <Link className="text-link" href={`/servicos#servico-${service.id}`}>
+                  Saiba mais <span aria-hidden="true">↗</span>
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </div>
-      <div className="service-list service-list-teaser">
-        {services.map((service) => (
-          <article className={`service service-${service.id}`} key={service.id}>
-            <div className="service-number" aria-hidden="true">
-              {service.number}
-            </div>
-            <div className="service-title">
-              <p className="eyebrow">{service.category}</p>
-              <h3>{service.title}</h3>
-              <p className="service-note">{service.note}</p>
-            </div>
-            <div className="service-copy">
-              <p>{service.description}</p>
-              <Link className="service-link" href={`/servicos#servico-${service.id}`}>
-                {service.cta}
-                <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
-      <Link className="text-link" href="/servicos" data-reveal>
-        Ver todos os serviços <span aria-hidden="true">↗</span>
-      </Link>
     </section>
   );
 }

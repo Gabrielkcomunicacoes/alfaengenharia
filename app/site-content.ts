@@ -23,9 +23,24 @@ export const company = {
 export const content = {
   navigation: [
     { label: "Início", href: "/" },
-    { label: "Serviços", href: "/servicos" },
-    { label: "Portfólio", href: "/portfolio" },
-    { label: "A Alfa", href: "/sobre" },
+    {
+      label: "Serviços",
+      href: "/servicos",
+      children: [
+        { label: "Manutenção predial", href: "/servicos#servico-predial" },
+        { label: "Sistemas de combate a incêndio", href: "/servicos#servico-incendio" },
+        { label: "Instalações elétricas", href: "/servicos#servico-eletrica" },
+        { label: "Todos os serviços", href: "/servicos" },
+      ],
+    },
+    {
+      label: "A Alfa",
+      href: "/sobre",
+      children: [
+        { label: "Sobre nós", href: "/sobre" },
+        { label: "Portfólio", href: "/portfolio" },
+      ],
+    },
     { label: "Contato", href: "/contato" },
   ],
   seo: {
@@ -59,6 +74,9 @@ export const content = {
     },
   },
   hero: {
+    title: "Movidos pelos desafios da sua empresa.",
+    lead: "Engenharia civil, elétrica e mecânica com coordenação técnica em cada obra, para você cuidar do que é essencial ao seu negócio.",
+    cta: "Solicite uma proposta",
     eyebrow: "Engenharia civil, elétrica e mecânica",
     description:
       "Da manutenção predial aos sistemas de combate a incêndio e às instalações elétricas: engenharia amazonense, com equipe experiente e coordenação técnica em cada obra.",
@@ -171,7 +189,34 @@ export const content = {
       },
     ],
   },
+  why: {
+    title: "Por que trabalhar conosco",
+    items: [
+      {
+        title: "Experiência",
+        description:
+          "Desde 2013, a Alfa atua em engenharia civil, elétrica e mecânica, com equipe treinada e experiente em obras e manutenções para empresas.",
+      },
+      {
+        title: "Compromisso",
+        description:
+          "Engenheiro e encarregado coordenam cada obra, com atenção à qualidade da execução e aos prazos combinados no escopo.",
+      },
+      {
+        title: "Segurança e Confiabilidade",
+        description:
+          "Engenheiros com registro no CREA/AM, incluindo especialista em Segurança do Trabalho e em Segurança Contra Incêndio e Pânico.",
+      },
+    ],
+  },
   about: {
+    quote:
+      "Engenharia com responsabilidade técnica, para que a sua equipe se dedique ao que é essencial ao negócio.",
+    paragraphs: [
+      "A Alfa Engenharia atua desde 2013 nas áreas civil, elétrica e mecânica, com sede em Manaus e atendimento a empresas no interior do Amazonas.",
+      "Nossa equipe reúne profissionais treinados e experientes, com engenheiro e encarregado na coordenação das obras. Qualidade, segurança e eficiência orientam o nosso trabalho.",
+      "Quer descobrir como podemos ajudar a sua empresa? Fale conosco!",
+    ],
     title: "Equipe experiente. Obras com coordenação técnica.",
     description:
       "Somos uma empresa amazonense, atuando desde 2013 nas áreas civil, elétrica e mecânica. Nossa equipe reúne profissionais treinados e experientes, com engenheiro e encarregado na coordenação das obras. Qualidade, segurança e eficiência orientam o nosso trabalho.",

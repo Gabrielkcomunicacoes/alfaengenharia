@@ -7,6 +7,11 @@ import "./globals.css";
 import "./editorial.css";
 import "./interaction.css";
 import "./additions.css";
+import "./animations.css";
+import "./home.css";
+import "./services.css";
+import "./stage.css";
+import "./about.css";
 // Preencher apenas com o domínio confirmado. Nunca inferir a origem de headers recebidos.
 const configuredOrigin = process.env.SITE_URL?.trim();
 const siteOrigin =

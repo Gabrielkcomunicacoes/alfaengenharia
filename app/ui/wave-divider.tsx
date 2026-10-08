@@ -1,4 +1,4 @@
-type Tone = "paper" | "white" | "ink";
+type Tone = "paper" | "white" | "ink" | "red";
 
 // One full cycle, rendered on the server. Decorative geometry needs no client JS.
 // Sampling at 120 intervals keeps the curve smooth across large viewports.

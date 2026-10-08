@@ -1,0 +1,405 @@
+/* Página Sobre */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.about-story {
+  background: var(--white);
+}
+.about-story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 80px;
+  align-items: center;
+}
+.about-story-photos {
+  position: relative;
+  padding: 0 0 48px;
+}
+.story-main {
+  display: block;
+  width: 82%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  box-shadow: 0 24px 48px rgb(23 40 62 / 24%);
+}
+.story-side {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 44%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 8px solid var(--white);
+  box-shadow: 0 16px 32px rgb(23 40 62 / 24%);
+}
+.story-badge {
+  position: absolute;
+  top: 28px;
+  right: 4%;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 28px rgb(178 31 45 / 35%);
+  animation: icon-float 4.2s ease-in-out infinite;
+}
+.story-badge strong {
+  font-family: var(--heading);
+  font-size: 56px;
+  line-height: 1;
+}
+.story-badge span {
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 80px;
+}
+.about-story-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.7;
+}
+.about-story-copy .eyebrow {
+  color: var(--accent);
+}
+.about-story-copy h2 {
+  color: var(--ink);
+  font-size: clamp(42px, 4vw, 60px);
+}
+.story-quote {
+  color: var(--ink);
+  font-weight: 600;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent);
+}
+.story-facts {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.story-facts strong {
+  display: block;
+  font-family: var(--heading);
+  font-size: 28px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.story-facts span {
+  font-size: 14px;
+}
+
+/* Quatro frentes */
+.about-pillars {
+  background: var(--blue-night);
+  color: var(--white);
+  padding-block: 96px;
+}
+.pillars-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.pillars-grid li {
+  padding: 34px 28px 38px;
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-top: 3px solid var(--accent);
+  transition:
+    transform 280ms ease,
+    background 280ms ease;
+}
+.pillars-grid li:hover {
+  transform: translateY(-6px);
+  background: rgb(255 255 255 / 11%);
+}
+.pillar-number {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.7px;
+  color: #ff8a94;
+}
+.pillars-grid h3 {
+  font-size: 40px;
+  margin: 10px 0 12px;
+}
+.pillars-grid p {
+  color: #d3deec;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Missão, visão e valores */
+.about-mission {
+  background: var(--paper);
+}
+.mission-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.mission-cards article {
+  background: var(--white);
+  padding: 44px 34px 40px;
+  box-shadow: 0 10px 30px rgb(23 40 62 / 8%);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
+}
+.mission-cards article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgb(23 40 62 / 14%);
+}
+.mission-cards article:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+}
+.mission-index {
+  position: absolute;
+  right: 22px;
+  top: 14px;
+  font-family: var(--heading);
+  font-size: 84px;
+  line-height: 1;
+  color: rgb(23 40 62 / 7%);
+}
+.mission-cards h3 {
+  font-size: 40px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.mission-cards p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Equipe técnica */
+.about-team {
+  background: var(--white);
+}
+.team-cards {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.team-cards li {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 32px;
+  background: var(--paper);
+  border-left: 4px solid var(--accent);
+  transition: transform 280ms ease;
+}
+.team-cards li:hover {
+  transform: translateY(-4px);
+}
+.team-avatar {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--blue), var(--blue-night));
+  color: var(--white);
+  font-family: var(--heading);
+  font-size: 34px;
+}
+.team-cards h3 {
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.team-cards p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.team-registration {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  background: var(--accent);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+/* Compromissos */
+.about-commit {
+  background: var(--paper);
+  padding-block: 72px;
+}
+.commit-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.commit-row > div {
+  border-top: 2px solid var(--ink);
+  padding-top: 22px;
+}
+.commit-row .eyebrow {
+  color: var(--accent);
+}
+.commit-row h3 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+.commit-row p {
+  color: var(--muted);
+}
+
+/* Galeria em mosaico */
+.about-gallery {
+  background: var(--white);
+}
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 240px;
+  gap: 16px;
+}
+.mosaic figure {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+.mosaic figure.tall {
+  grid-row: span 2;
+}
+.mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 700ms cubic-bezier(0.22, 0.72, 0.25, 1);
+}
+.mosaic figure:hover img {
+  transform: scale(1.06);
+}
+.about-gallery-link {
+  margin-top: 36px;
+  text-align: center;
+}
+
+/* Faixa final */
+.about-cta {
+  background: linear-gradient(100deg, var(--red-night), var(--accent));
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding-block: 72px calc(var(--wave-height) + 24px);
+}
+.about-cta-wave {
+  position: absolute;
+  inset: auto 0 -1px;
+  transform: rotate(180deg);
+  z-index: 1;
+}
+.about-cta-wave .wave-divider {
+  background: transparent !important;
+}
+.about-cta-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.about-cta h2 {
+  font-size: clamp(38px, 4vw, 56px);
+  margin-bottom: 10px;
+}
+.about-cta p {
+  color: #fbe4e6;
+  font-size: 20px;
+}
+.button-light {
+  background: var(--white);
+  color: var(--accent);
+  border-color: var(--white);
+  flex: 0 0 auto;
+}
+.button-light:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+}
+
+@media (max-width: 1099px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 899px) {
+  .about-story-grid,
+  .mission-cards,
+  .team-cards,
+  .commit-row {
+    grid-template-columns: 1fr;
+  }
+  .about-story-grid {
+    gap: 40px;
+  }
+  .story-facts {
+    grid-template-columns: 1fr;
+  }
+  .mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 200px;
+  }
+  .about-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .team-cards li {
+    padding: 24px;
+  }
+}
+@media (max-width: 599px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .story-badge {
+    width: 108px;
+    height: 108px;
+  }
+  .story-badge strong {
+    font-size: 44px;
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { content } from "../site-content";
 import { Header } from "../ui/header";
 import { Footer } from "../ui/footer";
+import { PageBanner } from "../ui/page-banner";
 import { WaveDivider } from "../ui/wave-divider";
 import { ServicesSection } from "../ui/sections/services-section";
 import { ProcessSection } from "../ui/sections/process-section";
@@ -18,7 +19,11 @@ export default function Servicos() {
     <>
       <Header />
       <main id="conteudo" tabIndex={-1}>
-        <WaveDivider from="paper" to="white" />
+        <PageBanner eyebrow="Serviços" title="Nossos Serviços">
+          Manutenção predial, sistemas de combate a incêndio e instalações
+          elétricas, além de obra civil, serralheria e manutenção mecânica, com
+          coordenação técnica em cada obra.
+        </PageBanner>
         <div className="surface-white">
           <ServicesSection />
         </div>

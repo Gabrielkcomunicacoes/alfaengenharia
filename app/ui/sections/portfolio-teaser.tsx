@@ -22,17 +22,22 @@ export function PortfolioTeaser() {
         {portfolio.map((project) => (
           <article className="portfolio-project" key={project.id} data-reveal>
             <div className="project-images">
-              <figure className="project-photo">
-                <img
-                  src={project.after.src}
-                  alt={project.after.alt}
-                  width={project.after.width}
-                  height={project.after.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption>Depois</figcaption>
-              </figure>
+              {(["before", "after"] as const).map((stage) => {
+                const photo = project[stage];
+                return (
+                  <figure className="project-photo" key={stage}>
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>{stage === "before" ? "Antes" : "Depois"}</figcaption>
+                  </figure>
+                );
+              })}
             </div>
             <div className="project-copy">
               <p className="eyebrow">{project.category}</p>

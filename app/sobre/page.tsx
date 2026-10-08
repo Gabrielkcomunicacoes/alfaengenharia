@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { content } from "../site-content";
 import { Header } from "../ui/header";
 import { Footer } from "../ui/footer";
+import { PageBanner } from "../ui/page-banner";
 import { WaveDivider } from "../ui/wave-divider";
-import { AboutSection } from "../ui/sections/about-section";
+import { AboutCta, AboutPage } from "../ui/sections/about-page";
+import { StatsStrip } from "../ui/sections/stats-strip";
 import { RegionSection } from "../ui/sections/region-section";
 
 export const metadata: Metadata = {
@@ -16,10 +18,15 @@ export default function Sobre() {
     <>
       <Header />
       <main id="conteudo" tabIndex={-1}>
-        <WaveDivider from="paper" to="ink" />
-        <AboutSection />
-        <WaveDivider from="ink" to="paper" />
+        <PageBanner eyebrow="A Alfa" title="Sobre a Alfa Engenharia">
+          Empresa amazonense de engenharia civil, elétrica e mecânica, atuando
+          desde 2013 em Manaus e no interior do Amazonas.
+        </PageBanner>
+        <AboutPage />
+        <StatsStrip />
+        <WaveDivider from="red" to="paper" />
         <RegionSection />
+        <AboutCta />
       </main>
       <WaveDivider from="paper" to="white" reverse />
       <Footer />

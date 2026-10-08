@@ -1,14 +1,32 @@
 ﻿"use client";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { recordInteraction } from "../measurement";
 
+// Blocos que entram com revelação mesmo sem data-reveal no JSX.
+const AUTO_REVEAL = [
+  ".faq-list details",
+  ".complementary-group",
+  ".portfolio-project",
+  ".work-photo",
+  ".preparation-list li",
+  ".contact > *",
+  ".footer-main > *",
+  ".credibility p",
+].join(",");
+
 export function SiteEnhancements() {
+  const pathname = usePathname();
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const compactLayout = window.matchMedia("(max-width: 599px)");
+    document.querySelectorAll<HTMLElement>(AUTO_REVEAL).forEach((element, index) => {
+      if (element.closest("[data-reveal]")) return;
+      element.dataset.reveal = "";
+      element.dataset.revealDelay = String((index % 4) * 60);
+    });
     const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
     const seen = new WeakSet<HTMLElement>();
-    const animations = new Map<Animation, HTMLElement>();
     let observer: IntersectionObserver | undefined;
 
     // Recover a failed responsive image once using its independent JPEG source.
@@ -31,59 +49,36 @@ export function SiteEnhancements() {
       if (image.complete && image.naturalWidth === 0) restoreOriginal(image);
     });
 
+    // Só elementos abaixo da dobra recebem a animação de chegada: eles são
+    // escondidos antes de entrar na tela e aparecem por transição. O que já
+    // está visível nunca é escondido, evitando piscadas.
+    const timers = new Set<number>();
+    function settle(element: HTMLElement) {
+      element.classList.remove("rv", "rv-in");
+      element.style.removeProperty("--rv-delay");
+    }
     function reveal(element: HTMLElement) {
       if (seen.has(element)) return;
       seen.add(element);
       observer?.unobserve(element);
-      // HTML and CSS are visible from the first render. Never hide focused content.
-      if (
-        reducedMotion.matches ||
-        !element.animate ||
-        element.contains(document.activeElement)
-      )
-        return;
-
       const compact = compactLayout.matches;
-      const variant = element.dataset.reveal;
-      const distance = compact ? 14 : 24;
-      let transform = `translate3d(0, ${distance}px, 0)`;
-      if (!compact && variant === "left")
-        transform = "translate3d(-20px, 0, 0)";
-      if (!compact && variant === "right")
-        transform = "translate3d(20px, 0, 0)";
-      if (variant === "image")
-        transform = `translate3d(0, ${compact ? 8 : 14}px, 0) scale(1.035)`;
-      const requestedDelay = Number(element.dataset.revealDelay || 0);
-      const delay = compact
-        ? 0
-        : Math.min(
-            120,
-            Math.max(0, Number.isFinite(requestedDelay) ? requestedDelay : 0),
-          );
-      const animation = element.animate(
-        [
-          { opacity: variant === "image" ? 0.65 : 0.22, transform },
-          { opacity: 1, transform: "none" },
-        ],
-        {
-          duration: compact ? 460 : variant === "image" ? 650 : 620,
-          delay,
-          easing: "cubic-bezier(.22,.72,.25,1)",
-          fill: "backwards",
-        },
-      );
-      animation.id = `alfa-reveal:${variant || "up"}`;
-      animations.set(animation, element);
-      const release = () => animations.delete(animation);
-      animation.onfinish = release;
-      animation.oncancel = release;
+      const requested = Number(element.dataset.revealDelay || 0);
+      const delay = compact ? 0 : Math.min(120, Math.max(0, Number.isFinite(requested) ? requested : 0));
+      element.style.setProperty("--rv-delay", delay + "ms");
+      requestAnimationFrame(() => element.classList.add("rv-in"));
+      const timer = window.setTimeout(() => {
+        timers.delete(timer);
+        settle(element);
+      }, 1100 + delay);
+      timers.add(timer);
     }
 
     function configureMotion() {
       observer?.disconnect();
-      animations.forEach((_, animation) => animation.cancel());
-      animations.clear();
-      if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
+      if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+        elements.forEach(settle);
+        return;
+      }
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -93,7 +88,16 @@ export function SiteEnhancements() {
         { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
       );
       elements.forEach((element) => {
-        if (!seen.has(element)) observer?.observe(element);
+        if (seen.has(element)) return;
+        const rect = element.getBoundingClientRect();
+        // Já visível (ou acima da tela): não anima.
+        if (rect.top < window.innerHeight * 0.96) {
+          seen.add(element);
+          return;
+        }
+        if (element.contains(document.activeElement)) return;
+        element.classList.add("rv");
+        observer?.observe(element);
       });
     }
     configureMotion();
@@ -107,9 +111,9 @@ export function SiteEnhancements() {
           observer?.unobserve(element);
         }
       }
-      animations.forEach((element, animation) => {
-        if (element.contains(event.target as Node)) animation.cancel();
-      });
+      for (const element of elements) {
+        if (element.contains(event.target as Node)) settle(element);
+      }
     };
     const handleClick = (event: MouseEvent) => {
       const link =
@@ -132,12 +136,13 @@ export function SiteEnhancements() {
     document.addEventListener("click", handleClick);
     return () => {
       observer?.disconnect();
-      animations.forEach((_, animation) => animation.cancel());
+      timers.forEach((timer) => clearTimeout(timer));
+      elements.forEach(settle);
       reducedMotion.removeEventListener("change", configureMotion);
       document.removeEventListener("focusin", onFocus);
       document.removeEventListener("click", handleClick);
       document.removeEventListener("error", onImageError, true);
     };
-  }, []);
+  }, [pathname]);
   return null;
 }

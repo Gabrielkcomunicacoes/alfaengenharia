@@ -1,0 +1,311 @@
+/* Animações do site. O bloco de prefers-reduced-motion em globals.css desliga tudo. */
+
+/* Hero: linhas do título entram em sequência */
+.hero-line {
+  animation: line-rise 760ms cubic-bezier(0.22, 0.72, 0.25, 1) both;
+}
+.hero-line:nth-child(2) {
+  animation-delay: 120ms;
+}
+.hero-line:nth-child(3) {
+  animation-delay: 240ms;
+}
+@keyframes line-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Indicador pulsante do eyebrow */
+.signal {
+  animation: signal-pulse 2.4s ease-out infinite;
+}
+@keyframes signal-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(178 31 45 / 45%);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 9px rgb(178 31 45 / 0%);
+  }
+}
+
+/* Botões */
+.button {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgb(178 31 45 / 22%);
+}
+.button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Cartões e blocos com elevação sutil */
+.area-card,
+.differentials-grid li,
+.stats-strip li,
+.complementary-group {
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease;
+}
+.area-card:hover,
+.differentials-grid li:hover,
+.complementary-group:hover {
+  transform: translateY(-4px);
+}
+.area-card:hover {
+  border-top-color: var(--accent);
+}
+.area-card li {
+  transition:
+    padding-left 200ms ease,
+    color 200ms ease;
+}
+.area-card li:hover {
+  padding-left: 8px;
+  color: var(--accent);
+}
+.stats-strip li:hover strong {
+  transform: scale(1.06);
+}
+.stats-strip strong {
+  display: block;
+  transform-origin: left bottom;
+  transition: transform 260ms ease;
+}
+.service {
+  transition: background-color 260ms ease;
+}
+.service:hover .service-number {
+  color: var(--accent);
+}
+.service-number {
+  transition: color 260ms ease;
+}
+
+/* Imagens: zoom suave ao passar o mouse */
+.project-photo,
+.work-photo > a {
+  overflow: hidden;
+}
+.project-photo img,
+.work-photo img {
+  transition: transform 700ms cubic-bezier(0.22, 0.72, 0.25, 1);
+}
+.project-photo:hover img,
+.work-photo a:hover img {
+  transform: scale(1.045);
+}
+
+/* Itens de lista e FAQ */
+.faq-list details > p {
+  animation: faq-open 320ms ease both;
+}
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.preparation-list li {
+  transition: transform 220ms ease;
+}
+.preparation-list li:hover {
+  transform: translateX(6px);
+}
+.process-steps li {
+  transition: transform 260ms ease;
+}
+.process-steps li:hover {
+  transform: translateY(-4px);
+}
+
+/* Rodapé e redes */
+.footer-main a {
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+.footer-main a:hover {
+  transform: translateX(3px);
+}
+
+/* Cabeçalho: entrada, ícone de e-mail e logo */
+.site-header {
+  animation: header-in 520ms cubic-bezier(0.22, 0.72, 0.25, 1) both;
+}
+@keyframes header-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.brand-home .official-logo {
+  transition: transform 260ms ease;
+}
+.brand-home:hover .official-logo {
+  transform: scale(1.04);
+}
+.header-mail {
+  transition:
+    color 180ms ease,
+    transform 220ms ease;
+}
+.header-mail:hover {
+  transform: translateY(-2px) rotate(-6deg);
+}
+.dropdown li {
+  transition: transform 200ms ease;
+}
+.dropdown li:hover {
+  transform: translateX(4px);
+}
+
+/* Traço sob os títulos cresce quando o título entra na tela */
+.title-rule {
+  transform-origin: center;
+  animation: rule-grow 700ms cubic-bezier(0.22, 0.72, 0.25, 1) 200ms both;
+}
+@keyframes rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@supports (animation-timeline: view()) {
+  .title-rule {
+    animation: rule-grow linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 80%;
+  }
+}
+
+/* Cards da home */
+.service-cards article,
+.why-cards li,
+.number-cards li {
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
+}
+.service-cards article:hover {
+  transform: translateY(-6px);
+}
+.service-cards article:hover h3 {
+  color: var(--accent);
+}
+.service-cards h3 {
+  transition: color 220ms ease;
+}
+.why-cards li:hover,
+.number-cards li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgb(0 0 0 / 28%);
+}
+.why-icon {
+  display: inline-flex;
+  animation: icon-float 4.2s ease-in-out infinite;
+}
+.why-cards li:nth-child(2) .why-icon {
+  animation-delay: -1.4s;
+}
+.why-cards li:nth-child(3) .why-icon {
+  animation-delay: -2.8s;
+}
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.why-cards li:hover .why-icon svg {
+  transform: scale(1.1) rotate(-4deg);
+}
+.why-icon svg {
+  transition: transform 300ms ease;
+}
+.why-home-bg {
+  transform: scale(1.06);
+  animation: bg-drift 24s ease-in-out infinite alternate;
+}
+@keyframes bg-drift {
+  to {
+    transform: scale(1.14) translate3d(-1.5%, 0, 0);
+  }
+}
+
+/* Botão com seta e links de texto */
+.service-link,
+.text-link {
+  transition:
+    color 180ms ease,
+    gap 220ms ease;
+}
+.text-link:hover {
+  gap: 28px;
+}
+
+/* Ícones e campos de contato */
+.contact input,
+.contact textarea,
+.contact select {
+  transition:
+    border-color 180ms ease,
+    box-shadow 220ms ease;
+}
+.contact input:focus,
+.contact textarea:focus,
+.contact select:focus {
+  box-shadow: 0 0 0 3px rgb(178 31 45 / 18%);
+}
+
+/* Chegada dos elementos ao rolar: escondidos só enquanto estão abaixo da dobra */
+.rv {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.72, 0.25, 1) var(--rv-delay, 0ms),
+    transform 0.7s cubic-bezier(0.22, 0.72, 0.25, 1) var(--rv-delay, 0ms) !important;
+  will-change: opacity, transform;
+}
+.rv[data-reveal="left"] {
+  transform: translate3d(-20px, 0, 0);
+}
+.rv[data-reveal="right"] {
+  transform: translate3d(20px, 0, 0);
+}
+.rv.rv-in {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 599px) {
+  .rv {
+    transform: translate3d(0, 14px, 0);
+  }
+}
